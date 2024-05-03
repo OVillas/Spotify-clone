@@ -1,4 +1,4 @@
 export type Music = {
   Title: string;
-  Duration: number;
+  Duration: number; // in seconds
 };

@@ -1,55 +1,24 @@
 import AlbumItem from "@/components/AlbumItem";
+import DailyMix from "@/components/DailyMix";
 import { Footer } from "@/components/Footer";
 import { Sidebar } from "@/components/Sidebar";
+import albumsMock from "@/mocks/AlbumsMock";
+import { ArtistMock } from "@/mocks/ArtistsMock";
+import { PlaylistMock } from "@/mocks/playlistMock";
 import { Album } from "@/types/album";
-import { ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { Artist } from "@/types/artist";
+import { Playlist } from "@/types/playlist";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import Image from "next/image";
-
-const album: Album[] = [
-  {
-    Title: "The Dark Side of the Moon",
-    Artist: "Pink Floyd",
-    UrlCape: "/The-Dark-side-of-the-moon.jpg",
-    AltCape: "Capa do album the dark side of the moon da banda Pink Floyd",
-  },
-  {
-    Title: "The Wall",
-    Artist: "Pink Floyd",
-    UrlCape: "/The-wall.jpg",
-    AltCape: "Capa do album the wall da banda Pink Floyd",
-  },
-  {
-    Title: "Animals",
-    Artist: "Pink Floyd",
-    UrlCape: "/animals.jpg",
-    AltCape: "Capa do album animals da banda Pink Floyd",
-  },
-  {
-    Title: "Wish You Were Here",
-    Artist: "Pink Floyd",
-    UrlCape: "/whish-you-where-here.jpg",
-    AltCape: "Capa do album Wish You Were Here da banda Pink Floyd",
-  },
-  {
-    Title: "An evening with silk sonic",
-    Artist: "Bruno Mars & Anderson Paak",
-    UrlCape: "/an-evening-with silk-sonic.jpg",
-    AltCape: "Capa do album an evening with silk sonic do Brunos Mars e Anderson Paak",
-  },
-  {
-    Title: "Doo wops & hooligans",
-    Artist: "Bruno Mars",
-    UrlCape: "/doo-wops-and-hooligans.jpg",
-    AltCape: "Capa do album Doo wops and hooligans do Brunos Mars e Anderson Paak",
-  },
-];
+const album: Album[] = albumsMock;
+const dailyMix: Artist[] = ArtistMock;
+const playlists: Playlist[] = PlaylistMock;
 
 export default function Home() {
   return (
     <div className="h-screen flex flex-col">
       <div className="flex flex-1">
-        <Sidebar />
+        <Sidebar playlists={playlists} />
         <main className="flex-1 p-6">
           <div className="flex items-center gap-4">
             <button className="rounded-full bg-black/40 p-1">
@@ -60,12 +29,21 @@ export default function Home() {
             </button>
           </div>
 
-          <h1 className="font-semibold text-3xl mt-10"> Good Morning</h1>
+          <div className="flex items-center gap-3 mt-4">
+            <div className="w-16 h-8 text-zinc-100 text-md font-semibold bg-white/10 text-center rounded-2xl flex justify-center items-center hover:bg-white/15 cursor-pointer">
+              <a href="">Tudo</a>
+            </div>
+            <div className="w-20 h-8 text-zinc-100 text-md font-semibold bg-white/10 text-center rounded-2xl flex justify-center items-center hover:bg-white/15 cursor-pointer">
+              <a href="">Música</a>
+            </div>
+            <div className="w-24 h-8 text-zinc-100 text-md font-semibold bg-white/10 text-center rounded-2xl flex justify-center items-center hover:bg-white/15 cursor-pointer">
+              <a href="">Podcast</a>
+            </div>
+          </div>
 
           <div className="grid grid-cols-3 gap-4 mt-4">
             {album.map((album) => (
               <AlbumItem
-                key={album.Title} 
                 title={album.Title}
                 src={album.UrlCape}
                 alt={album.AltCape}
@@ -73,91 +51,18 @@ export default function Home() {
             ))}
           </div>
           <h2 className="font-semibold text-2xl mt-10">
-            {" "}
             Made for Gabriel Villarinho
           </h2>
 
           <div className="grid grid-cols-8 gap-4 mt-4">
-            <a
-              href="#"
-              className="bg-white/5 p-2 rounded-md flex flex-col gap-2 hover:bg-white/10"
-            >
-              <Image
-                width={104}
-                height={104}
-                src="/The-Dark-side-of-the-moon.jpg"
-                className="w-full"
-                alt="Capa do album the dark side of the moon da banda Pink Floyd"
-              ></Image>
-              <strong className="font-semibold">Daily Mix 1</strong>
-              <span className="text-sm text-zinc-500">
-                Wallows, COIN, girl in red and more
-              </span>
-            </a>
-            <a
-              href="#"
-              className="bg-white/5 p-2 rounded-md flex flex-col gap-2 hover:bg-white/10"
-            >
-              <Image
-                width={104}
-                height={104}
-                src="/The-Dark-side-of-the-moon.jpg"
-                className="w-full"
-                alt="Capa do album the dark side of the moon da banda Pink Floyd"
-              ></Image>
-              <strong className="font-semibold">Daily Mix 1</strong>
-              <span className="text-sm text-zinc-500">
-                Wallows, COIN, girl in red and more
-              </span>
-            </a>
-            <a
-              href="#"
-              className="bg-white/5 p-2 rounded-md flex flex-col gap-2 hover:bg-white/10"
-            >
-              <Image
-                width={104}
-                height={104}
-                src="/The-Dark-side-of-the-moon.jpg"
-                className="w-full"
-                alt="Capa do album the dark side of the moon da banda Pink Floyd"
-              ></Image>
-              <strong className="font-semibold">Daily Mix 1</strong>
-              <span className="text-sm text-zinc-500">
-                Wallows, COIN, girl in red and more
-              </span>
-            </a>
-            <a
-              href="#"
-              className="bg-white/5 p-2 rounded-md flex flex-col gap-2 hover:bg-white/10"
-            >
-              <Image
-                width={104}
-                height={104}
-                src="/The-Dark-side-of-the-moon.jpg"
-                className="w-full"
-                alt="Capa do album the dark side of the moon da banda Pink Floyd"
-              ></Image>
-              <strong className="font-semibold">Daily Mix 1</strong>
-              <span className="text-sm text-zinc-500">
-                Wallows, COIN, girl in red and more
-              </span>
-            </a>
-            <a
-              href="#"
-              className="bg-white/5 p-2 rounded-md flex flex-col gap-2 hover:bg-white/10"
-            >
-              <Image
-                width={104}
-                height={104}
-                src="/The-Dark-side-of-the-moon.jpg"
-                className="w-full"
-                alt="Capa do album the dark side of the moon da banda Pink Floyd"
-              ></Image>
-              <strong className="font-semibold">Daily Mix 1</strong>
-              <span className="text-sm text-zinc-500">
-                Wallows, COIN, girl in red and more
-              </span>
-            </a>
+            {dailyMix.map((artist, key) => (
+              <DailyMix
+                title={artist.Name}
+                src={artist.UrlImage}
+                alt={artist.AltImage}
+                count={key + 1}
+              />
+            ))}
           </div>
         </main>
       </div>

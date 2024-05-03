@@ -7,7 +7,7 @@ interface AlbumItemProps {
   alt: string;
 }
 
-const AlbumItem: React.FC<AlbumItemProps> = ({ title, src, alt }) => {
+const AlbumItem = ({ title, src, alt }: AlbumItemProps) => {
   return (
     <div className="bg-white/5 rounded group flex items-center gap-4 overflow-hidden hover:bg-white/10 transition-colors">
       <Image width={104} height={104} src={src} alt={alt} />
