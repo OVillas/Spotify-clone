@@ -9,7 +9,7 @@ import Image from "next/image";
 
 export function Sidebar({ playlists }: SidebarProps) {
   return (
-    <aside className="w-72 bg-zinc-950 p-6">
+    <aside className="w-72 bg-zinc-950 p-6 rounded-lg">
       <nav className="flex items-center text-zinc-400">
         <button className="flex items-center gap-2 hover:text-zinc-300">
           <Library />
@@ -58,7 +58,7 @@ export function Sidebar({ playlists }: SidebarProps) {
               <a href="#" className="font-bold hover:underline">
                 {playlist.Name}
               </a>
-              <a href="#" className="hover:underline text-sm">
+              <a href="#" className="hover:underline text-sm text-zinc-400">
                 Playlist • {playlist.MadeFor}
               </a>
             </div>
